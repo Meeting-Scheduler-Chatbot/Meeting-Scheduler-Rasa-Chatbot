@@ -1,5 +1,5 @@
 
-# Meeting Scheduler Chatbot
+# Meeting Scheduler Chatbot - Rasa Chatbot
 
 Scheduling a meeting is a really time-consuming task. We are planning to make this process easier by developing a chatbot with a special scheduling algorithm which is based on participants calendar information that we will access by authenticating users calendars. This way users will not suffer because of the looping mail traffic while arranging meetings and they can focus on their tasks. We decided to develop a chatbot since we can integrate it with the tools that are used in the industry, such as Slack or Microsoft Teams.
 
