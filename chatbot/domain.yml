@@ -1,0 +1,194 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- inform:
+    use_entities: true
+- schedule_meeting:
+    use_entities: true
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- mood_great:
+    use_entities: true
+- mood_unhappy:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- thankyou:
+    use_entities: true
+- out_scope:
+    use_entities: true
+- show_upcoming_events:
+    use_entities: true
+- out_of_scope:
+    use_entities: true
+- add_new_people_or_groups_to_meeting:
+    use_entities: true
+- remove_people_or_groups_from_meeting:
+    use_entities: true
+entities:
+# - time
+- duration
+- group_name
+- meeting_name
+# - meeting_time
+- user_info
+- user_mail
+slots:
+  duration:
+    type: any
+  # meeting_time:
+  #   type: rasa.shared.core.slots.TextSlot
+  #   initial_value: null
+  #   auto_fill: false
+  #   influence_conversation: false
+  meeting_name:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  group_name:
+    type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  user_mail:
+    type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  list_of_ids:
+    type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  token:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  meeting_scheduled_time:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  user_info:
+    type: rasa.shared.core.slots.ListSlot
+    initial_value: null
+    auto_fill: false
+    influence_conversation: false
+  requested_slot:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_default:
+  - text: Sorry I didn't get that. Can you rephrase?
+  utter_ask_group_name:
+  - text: With which group do you want to meet with?
+  utter_ask_user_info:
+  - text: Who do you want to meet with(email(s) or group name(s))?
+  # utter_ask_meeting_time:
+  # - text: When meeting will happen?
+  utter_ask_meeting_name:
+  - text: Could you give me a name for meeting?
+  utter_ask_duration:
+  - text: For how long you wish your meeting to be?
+  utter_slot_values:
+  - text: |
+      Here's your schedule meeting log:
+       - Name: {meeting_name}
+       - Time: {meeting_scheduled_time}
+       - Users: {user_mail}
+       - Duration: {duration} Minutes
+       - Team: {group_name}
+  # utter_slot_values:
+  # - text: |
+  #     Here's your schedule meeting log:
+  #      - Name: {meeting_name}
+  #      - Day: {meeting_time}
+  #      - Time: {meeting_scheduled_time}
+  #      - Users: {user_mail}
+  #      - Duration: {duration}
+  #      - Team: {group_name}
+  utter_submit:
+  - text: Meeting arranged!
+  utter_no_worries:
+  - text: No problem :)
+  utter_ask_continue:
+  - text: Sorry, I dont quite udnerstand. Do you want to continue?
+  utter_wrong_group_name:
+  - text: Group name is not in the database, please try again
+  utter_wrong_mail:
+  - text: Mail is not in the database, please try again
+actions:
+- action_add_new_people_or_groups_to_meeting
+- action_remove_people_or_groups_from_meeting
+- action_show_upcoming_events
+- action_schedule_event
+- action_inform_doing_scheduling
+- utter_slot_values
+- utter_submit
+- validate_schedule_meeting_form
+forms:
+  schedule_meeting_form:
+    duration:
+    - entity: duration
+      intent:
+      - inform
+      - schedule_meeting
+      type: from_entity
+    - intent: deny
+      type: from_intent
+      value: None
+    meeting_name:
+    - intent: deny
+      type: from_intent
+      value: None
+    - entity: meeting_name
+      intent:
+      - inform
+      - schedule_meeting
+      type: from_entity
+    # meeting_time:
+    # - intent: deny
+    #   type: from_intent
+    #   value: None
+    # - entity: meeting_time
+    #   intent:
+    #   - inform
+    #   - schedule_meeting
+    #   type: from_entity
+    user_info:
+    - intent: deny
+      type: from_intent
+      value: None
+    - entity: user_info
+      intent:
+      - inform
+      - schedule_meeting
+      type: from_entity
+e2e_actions: []

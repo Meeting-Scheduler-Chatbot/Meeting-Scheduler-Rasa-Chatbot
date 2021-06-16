@@ -1,0 +1,200 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - I don't want
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - who are you
+- intent: out_of_scope
+  examples: |
+    - that's not what I want to do
+    - wait stop
+    - you're no help
+    - this is no help at all
+    - how old are you
+    - I want to order a pizza
+    - tell me the weather
+    - this isn't working
+    - I already told you that
+    - don't like that
+    - I don't want to tell you that
+    - none of your business
+    - that's not right
+    - stop asking
+    - nevermind
+    - I want to do something else
+    - I changed my mind
+- intent: thankyou
+  examples: |
+    - okay great thanks
+    - thank you
+    - sure thanks
+    - thanks bye
+    - thanks
+- intent: schedule_meeting
+  examples: |
+    - im looking for a meeting
+    - generate me a meeting
+    - I need a meeting
+    - Arrange me a meeting
+    - I want a meeting with [group_Appa](user_info) group and [group_CAVIT](user_info)
+    - [group_OLAAAY](user_info) team need to be in meeting now.
+    - schedule meeting with [group_IT](user_info) group
+    - I want to meeting with [group_Tech](user_info) group
+    - I want [brainstorming](meeting_name) with [group_Developers](user_info) group
+    - Set up [brainstorming](meeting_name) with [group_Team A](user_info)
+    - Arrange meeting with name [interview](meeting_name)
+    - Set up an event as [team meeting](meeting_name)
+    - I want a meeting
+    - [group_executives](user_info) team needs 90 min meeting
+    - I want a 10 minutes meeting
+    - I want a 30 minutes meeting
+    - 45 min meeting
+    - arrange us 20 minutes meeting
+  #   - Set up an event for [Friday night](meeting_time)
+  #   - I want meeting at [tomorrow_morning](meeting_time)
+  #   - New event on [Monday morning](meeting_time), name it [sales presentation] with [group_Sales](user_info) team for [45](duration) minutes
+    
+- intent: inform
+  examples: |
+    - [group_IT](user_info) and [group_IK](user_info)
+    - [group_IT](user_info) and [group_Appa](user_info)
+    - [group_IK](user_info) and [group_CAVIT](user_info)
+    - [group_IK](user_info) team
+    - [group_Cavit](user_info) group
+    - [cavitcakir@sabanciuniv.edu](user_info)
+    - [kayakapagan2000@gmail.com](user_info) and [gokberkyar@hotmail.com](user_info)
+    - with group [group_A](user_info)
+    - [group_A](user_info)
+    - [group_Team B](user_info)
+    - [group_Developers 2](user_info)
+    - Project [Presentation](meeting_name)
+    - [Urgent](meeting_name) meeting
+    - with name [Project report](meeting_name)
+    - name [About project](meeting_name)
+    - named it as [Found bug](meeting_name)
+    - [Found error](meeting_name) named
+    - [kayakapagan@sabanciuniv.edu](user_info)
+    - [presentation](meeting_name)
+  # - [monday morning](meeting_time) meeting
+  # - the event at [tomorrow 4 o clock](meeting_time)
+  # - [3:45](meeting_time) event
+  # - at [tomorrow evening](meeting_time)
+  # - will be [next week](meeting_time)
+  # - [tomorrow](meeting_time)
+- intent: show_upcoming_events
+  examples: |
+    - Show me my further event
+    - Show furher events
+    - Can I see further meeting
+    - Can I see upcoming events
+    - Show upcoming meetings
+    - Further events
+    - Upcoming meetings
+    - Show my schedule
+    - My upcoming schedule
+    - When is my next meeting
+    - What is my further meetings
+    - When is my upcoming event
+- intent: add_new_people_or_groups_to_meeting
+  examples: |
+    - I want to add [cavitcakir@sabanciuniv.edu](user_info)
+    - add [cavitcakir@sabanciuniv.edu](user_info) to meeting group members
+    - include [demirdemirel@sabanciuniv.edu](user_info) too please.
+    - add [kayakapagan2000@sabanciuniv.edu](user_info)
+    - add [group_IT](user_info) to meeting.
+
+- intent: remove_people_or_groups_from_meeting
+  examples: |
+    - I want to remove [cavitcakir@sabanciuniv.edu](user_info)
+    - I want to take out [elma_345@hotmail.edu](user_info)
+    - I want to pull out [ayse_ali@hotmail.edu](user_info)
+    - delete [mehmet@sabanciuniv.edu](user_info) from meeting group members
+    - exclude [efe@sabanciuniv.edu](user_info) too please.
+    - delete [hyyyo_223@sabanciuniv.edu](user_info)
+    - delete [group_Telefon](user_info) from meeting.
+    
+- regex: user_info
+  examples: |
+    - ([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})
+    - group_(\w+|\d+)

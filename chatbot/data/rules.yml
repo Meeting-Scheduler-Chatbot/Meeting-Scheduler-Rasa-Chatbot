@@ -1,0 +1,40 @@
+version: "2.0"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: submit schedule_meeting_form
+  condition:
+  - active_loop: schedule_meeting_form
+  steps:
+    - action: schedule_meeting_form
+    - active_loop: null
+    - action: action_inform_doing_scheduling
+    - action: action_schedule_event 
+    - action: utter_submit
+    - action: utter_slot_values
+    - action: action_restart
+
+- rule: Show upcoming events when user intents
+  steps:
+  - intent: show_upcoming_events
+  - action: action_show_upcoming_events
+
+- rule: Add new people or groups to mail_list
+  steps:
+  - intent: add_new_people_or_groups_to_meeting
+  - action: action_add_new_people_or_groups_to_meeting
+
+- rule: Remove people or groups from mail_list
+  steps:
+  - intent: remove_people_or_groups_from_meeting
+  - action: action_remove_people_or_groups_from_meeting

@@ -1,0 +1,83 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: schedule meeting happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: schedule_meeting
+  - action: schedule_meeting_form
+  - active_loop: schedule_meeting_form
+  - active_loop: null
+  - action: action_inform_doing_scheduling
+  - action: action_schedule_event
+  - action: utter_submit
+  - action: utter_slot_values
+  - action: action_restart
+  - intent: thankyou
+  - action: utter_no_worries
+  - action: utter_goodbye
+
+- story: schedule meeting continue
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: schedule_meeting
+  - action: schedule_meeting_form
+  - active_loop: schedule_meeting_form
+  - intent: out_of_scope
+  - action: utter_ask_continue
+  - intent: affirm
+  - action: schedule_meeting_form
+  - active_loop: null
+  - action: action_inform_doing_scheduling
+  - action: action_schedule_event
+  - action: utter_submit
+  - action: utter_slot_values
+  - action: action_restart
+  - intent: thankyou
+  - action: utter_no_worries
+  - action: utter_goodbye
+
+- story: schedule meeting stop
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: schedule_meeting
+  - action: schedule_meeting_form
+  - active_loop: schedule_meeting_form
+  - intent: out_of_scope
+  - action: utter_ask_continue
+  - intent: deny
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: utter_goodbye
+  - action: action_restart
